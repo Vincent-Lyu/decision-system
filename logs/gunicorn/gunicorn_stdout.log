@@ -1,0 +1,148 @@
+[2018-07-09 18:54:05 +0000] [16593] [INFO] Starting gunicorn 19.9.0
+[2018-07-09 18:54:05 +0000] [16593] [INFO] Listening at: http://127.0.0.1:8000 (16593)
+[2018-07-09 18:54:05 +0000] [16593] [INFO] Using worker: sync
+[2018-07-09 18:54:05 +0000] [16596] [INFO] Booting worker with pid: 16596
+[2018-07-09 18:54:05 +0000] [16598] [INFO] Booting worker with pid: 16598
+[2018-07-09 18:54:05 +0000] [16600] [INFO] Booting worker with pid: 16600
+[2018-07-09 18:54:05 +0000] [16602] [INFO] Booting worker with pid: 16602
+[2018-07-09 18:54:29,109] ERROR in app: Exception on / [GET]
+Traceback (most recent call last):
+  File "/home/ubuntu/decision-system/venv/lib/python3.5/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/decision-system/venv/lib/python3.5/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/decision-system/venv/lib/python3.5/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/decision-system/venv/lib/python3.5/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/home/ubuntu/decision-system/venv/lib/python3.5/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/decision-system/venv/lib/python3.5/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/decision-system/app.py", line 7, in index
+    return render_template('../index.html')
+  File "/home/ubuntu/decision-system/venv/lib/python3.5/site-packages/flask/templating.py", line 134, in render_template
+    return _render(ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "/home/ubuntu/decision-system/venv/lib/python3.5/site-packages/jinja2/environment.py", line 869, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/home/ubuntu/decision-system/venv/lib/python3.5/site-packages/jinja2/environment.py", line 830, in get_template
+    return self._load_template(name, self.make_globals(globals))
+  File "/home/ubuntu/decision-system/venv/lib/python3.5/site-packages/jinja2/environment.py", line 804, in _load_template
+    template = self.loader.load(self, name, globals)
+  File "/home/ubuntu/decision-system/venv/lib/python3.5/site-packages/jinja2/loaders.py", line 113, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/home/ubuntu/decision-system/venv/lib/python3.5/site-packages/flask/templating.py", line 58, in get_source
+    return self._get_source_fast(environment, template)
+  File "/home/ubuntu/decision-system/venv/lib/python3.5/site-packages/flask/templating.py", line 86, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: ../index.html
+[2018-07-09 18:56:18 +0000] [16593] [INFO] Handling signal: term
+[2018-07-09 18:56:18 +0000] [16600] [INFO] Worker exiting (pid: 16600)
+[2018-07-09 18:56:18 +0000] [16596] [INFO] Worker exiting (pid: 16596)
+[2018-07-09 18:56:18 +0000] [16598] [INFO] Worker exiting (pid: 16598)
+[2018-07-09 18:56:18 +0000] [16602] [INFO] Worker exiting (pid: 16602)
+[2018-07-09 18:56:18 +0000] [16593] [INFO] Shutting down: Master
+[2018-07-09 18:56:19 +0000] [16798] [INFO] Starting gunicorn 19.9.0
+[2018-07-09 18:56:19 +0000] [16798] [INFO] Listening at: http://127.0.0.1:8000 (16798)
+[2018-07-09 18:56:19 +0000] [16798] [INFO] Using worker: sync
+[2018-07-09 18:56:19 +0000] [16801] [INFO] Booting worker with pid: 16801
+[2018-07-09 18:56:20 +0000] [16803] [INFO] Booting worker with pid: 16803
+[2018-07-09 18:56:20 +0000] [16804] [INFO] Booting worker with pid: 16804
+[2018-07-09 18:56:20 +0000] [16807] [INFO] Booting worker with pid: 16807
+[2018-07-09 19:01:19 +0000] [16798] [INFO] Handling signal: term
+[2018-07-09 19:01:19 +0000] [16801] [INFO] Worker exiting (pid: 16801)
+[2018-07-09 19:01:19 +0000] [16803] [INFO] Worker exiting (pid: 16803)
+[2018-07-09 19:01:19 +0000] [16804] [INFO] Worker exiting (pid: 16804)
+[2018-07-09 19:01:19 +0000] [16807] [INFO] Worker exiting (pid: 16807)
+[2018-07-09 19:01:19 +0000] [16798] [INFO] Shutting down: Master
+[2018-07-09 19:01:20 +0000] [16923] [INFO] Starting gunicorn 19.9.0
+[2018-07-09 19:01:20 +0000] [16923] [INFO] Listening at: http://127.0.0.1:8000 (16923)
+[2018-07-09 19:01:20 +0000] [16923] [INFO] Using worker: sync
+[2018-07-09 19:01:20 +0000] [16926] [INFO] Booting worker with pid: 16926
+[2018-07-09 19:01:20 +0000] [16927] [INFO] Booting worker with pid: 16927
+[2018-07-09 19:01:20 +0000] [16929] [INFO] Booting worker with pid: 16929
+[2018-07-09 19:01:20 +0000] [16932] [INFO] Booting worker with pid: 16932
+[2018-07-09 19:01:23,671] ERROR in app: Exception on / [GET]
+Traceback (most recent call last):
+  File "/home/ubuntu/decision-system/venv/lib/python3.5/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/decision-system/venv/lib/python3.5/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/decision-system/venv/lib/python3.5/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/decision-system/venv/lib/python3.5/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/home/ubuntu/decision-system/venv/lib/python3.5/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/decision-system/venv/lib/python3.5/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/decision-system/app.py", line 7, in index
+    return render_template('index.html')
+  File "/home/ubuntu/decision-system/venv/lib/python3.5/site-packages/flask/templating.py", line 134, in render_template
+    return _render(ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "/home/ubuntu/decision-system/venv/lib/python3.5/site-packages/jinja2/environment.py", line 869, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/home/ubuntu/decision-system/venv/lib/python3.5/site-packages/jinja2/environment.py", line 830, in get_template
+    return self._load_template(name, self.make_globals(globals))
+  File "/home/ubuntu/decision-system/venv/lib/python3.5/site-packages/jinja2/environment.py", line 804, in _load_template
+    template = self.loader.load(self, name, globals)
+  File "/home/ubuntu/decision-system/venv/lib/python3.5/site-packages/jinja2/loaders.py", line 125, in load
+    code = environment.compile(source, name, filename)
+  File "/home/ubuntu/decision-system/venv/lib/python3.5/site-packages/jinja2/environment.py", line 591, in compile
+    self.handle_exception(exc_info, source_hint=source_hint)
+  File "/home/ubuntu/decision-system/venv/lib/python3.5/site-packages/jinja2/environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/decision-system/venv/lib/python3.5/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/home/ubuntu/decision-system/templates/index.html", line 861, in template
+    legendTemplate       : '<ul class="<%=name.toLowerCase()%>-legend"><% for (var i=0; i<segments.length; i++){%><li><span style="background-color:<%=segments[i].fillColor%>"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>'
+  File "/home/ubuntu/decision-system/venv/lib/python3.5/site-packages/jinja2/environment.py", line 497, in _parse
+    return Parser(self, source, name, encode_filename(filename)).parse()
+  File "/home/ubuntu/decision-system/venv/lib/python3.5/site-packages/jinja2/parser.py", line 901, in parse
+    result = nodes.Template(self.subparse(), lineno=1)
+  File "/home/ubuntu/decision-system/venv/lib/python3.5/site-packages/jinja2/parser.py", line 883, in subparse
+    rv = self.parse_statement()
+  File "/home/ubuntu/decision-system/venv/lib/python3.5/site-packages/jinja2/parser.py", line 125, in parse_statement
+    self.fail('tag name expected', token.lineno)
+  File "/home/ubuntu/decision-system/venv/lib/python3.5/site-packages/jinja2/parser.py", line 59, in fail
+    raise exc(msg, lineno, self.name, self.filename)
+jinja2.exceptions.TemplateSyntaxError: tag name expected
+[2018-07-09 19:06:11 +0000] [16923] [INFO] Handling signal: term
+[2018-07-09 19:06:11 +0000] [16932] [INFO] Worker exiting (pid: 16932)
+[2018-07-09 19:06:11 +0000] [16926] [INFO] Worker exiting (pid: 16926)
+[2018-07-09 19:06:11 +0000] [16927] [INFO] Worker exiting (pid: 16927)
+[2018-07-09 19:06:11 +0000] [16929] [INFO] Worker exiting (pid: 16929)
+[2018-07-09 19:06:12 +0000] [16923] [INFO] Shutting down: Master
+[2018-07-09 19:06:13 +0000] [17020] [INFO] Starting gunicorn 19.9.0
+[2018-07-09 19:06:13 +0000] [17020] [INFO] Listening at: http://127.0.0.1:8000 (17020)
+[2018-07-09 19:06:13 +0000] [17020] [INFO] Using worker: sync
+[2018-07-09 19:06:13 +0000] [17023] [INFO] Booting worker with pid: 17023
+[2018-07-09 19:06:13 +0000] [17024] [INFO] Booting worker with pid: 17024
+[2018-07-09 19:06:13 +0000] [17026] [INFO] Booting worker with pid: 17026
+[2018-07-09 19:06:13 +0000] [17027] [INFO] Booting worker with pid: 17027
+[2018-07-09 19:15:42 +0000] [17020] [INFO] Handling signal: term
+[2018-07-09 19:15:42 +0000] [17024] [INFO] Worker exiting (pid: 17024)
+[2018-07-09 19:15:42 +0000] [17026] [INFO] Worker exiting (pid: 17026)
+[2018-07-09 19:15:42 +0000] [17027] [INFO] Worker exiting (pid: 17027)
+[2018-07-09 19:15:42 +0000] [17023] [INFO] Worker exiting (pid: 17023)
+[2018-07-09 19:15:42 +0000] [17020] [INFO] Shutting down: Master
+[2018-07-09 19:15:43 +0000] [17095] [INFO] Starting gunicorn 19.9.0
+[2018-07-09 19:15:43 +0000] [17095] [INFO] Listening at: http://127.0.0.1:8000 (17095)
+[2018-07-09 19:15:43 +0000] [17095] [INFO] Using worker: sync
+[2018-07-09 19:15:43 +0000] [17098] [INFO] Booting worker with pid: 17098
+[2018-07-09 19:15:44 +0000] [17100] [INFO] Booting worker with pid: 17100
+[2018-07-09 19:15:44 +0000] [17101] [INFO] Booting worker with pid: 17101
+[2018-07-09 19:15:44 +0000] [17103] [INFO] Booting worker with pid: 17103
+[2018-07-09 19:16:33 +0000] [17095] [INFO] Handling signal: term
+[2018-07-09 19:16:33 +0000] [17098] [INFO] Worker exiting (pid: 17098)
+[2018-07-09 19:16:33 +0000] [17100] [INFO] Worker exiting (pid: 17100)
+[2018-07-09 19:16:33 +0000] [17101] [INFO] Worker exiting (pid: 17101)
+[2018-07-09 19:16:33 +0000] [17103] [INFO] Worker exiting (pid: 17103)
+[2018-07-09 19:16:33 +0000] [17095] [INFO] Shutting down: Master
+[2018-07-09 19:16:34 +0000] [17123] [INFO] Starting gunicorn 19.9.0
+[2018-07-09 19:16:34 +0000] [17123] [INFO] Listening at: http://127.0.0.1:8000 (17123)
+[2018-07-09 19:16:34 +0000] [17123] [INFO] Using worker: sync
+[2018-07-09 19:16:34 +0000] [17126] [INFO] Booting worker with pid: 17126
+[2018-07-09 19:16:34 +0000] [17127] [INFO] Booting worker with pid: 17127
+[2018-07-09 19:16:34 +0000] [17128] [INFO] Booting worker with pid: 17128
+[2018-07-09 19:16:34 +0000] [17130] [INFO] Booting worker with pid: 17130
