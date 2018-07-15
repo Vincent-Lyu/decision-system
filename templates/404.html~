@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}复旦国关数据库决策系统 | 无法访问{% endblock %}
+
+{% block content %}
+<!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0 text-dark">敬请期待</h1>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+
+{% endblock %}
+</body>
+</html>
+

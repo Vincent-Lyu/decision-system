@@ -61,11 +61,11 @@ def jiaoshijixiao():
 
 @app.route('/教师科研统计', methods=['GET'])
 def jiaoshikeyantongji():
-    return render_template('404.html')
+    return render_template('index3.html')
 
 @app.route('/教师画像', methods=['GET'])
 def jiaoshihuaxiang():
-    return render_template('404.html')
+    return render_template('index4.html')
 
 
 if __name__ == '__main__':
