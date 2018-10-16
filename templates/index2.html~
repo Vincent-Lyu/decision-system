@@ -460,7 +460,7 @@
 <script>
  d3.wordcloud()
         .selector('#wordcloud')
-        .size([300, 300])
+        .size([400, 400])
         .words({{ wordCloudData | safe }})
         .start();
 </script>

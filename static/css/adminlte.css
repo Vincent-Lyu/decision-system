@@ -602,6 +602,14 @@ pre code {
 }
 
 .row {
+  display: block;
+  flex-wrap: wrap;
+  margin-right: -7.5px;
+  margin-left: -7.5px;
+}
+
+.row-flex {
+  display: flex;
   flex-wrap: wrap;
   margin-right: -7.5px;
   margin-left: -7.5px;

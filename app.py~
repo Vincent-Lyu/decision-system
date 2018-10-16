@@ -52,20 +52,20 @@ def getWordCloudData():
 
 @app.route('/', methods=['GET'])
 def index():
-    return render_template('index.html')
+    return render_template('index.html', curr_active=='学院概况')
 
 @app.route('/教师绩效', methods=['GET'])
 def jiaoshijixiao():
     wordCloudData = getWordCloudData()
-    return render_template('index2.html', wordCloudData=wordCloudData)
+    return render_template('index2.html', wordCloudData=wordCloudData, curr_active='教师绩效')
 
 @app.route('/教师科研统计', methods=['GET'])
 def jiaoshikeyantongji():
-    return render_template('index3.html')
+    return render_template('404.html', curr_active='教师科研统计')
 
 @app.route('/教师画像', methods=['GET'])
 def jiaoshihuaxiang():
-    return render_template('index4.html')
+    return render_template('404.html', curr_active='教师画像')
 
 
 if __name__ == '__main__':

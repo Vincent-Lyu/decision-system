@@ -25,7 +25,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item has-treeview menu-open">
-            <a href="{{ url_for('.index') }}" class="nav-link active">
+            <a href="{{ url_for('.index') }}" class="nav-link {% block active %}{% endblock %}">
               <i class="nav-icon fa fa-dashboard"></i>
               <p>
                 学院概况
