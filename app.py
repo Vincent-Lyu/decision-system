@@ -91,13 +91,13 @@ def jiaoshikeyantongji():
 
     sorted_scores = sorted(scores, key=lambda t: t[1], reverse=True)
 
-    return render_template('keyantongji.html', total=total,
+    return render_template('keyantongji_index.html', total=total,
                             rank1_item=sorted_res[0][0], rank1_score=sorted_res[0][1],
                             rank2_item=sorted_res[1][0], rank2_score=sorted_res[1][1],
                             rank3_item=sorted_res[2][0], rank3_score=sorted_res[2][1],
                             headers=headers, rows=rows, 
-                            items=[i for i, s in sorted_res], sum=[s for i, s in sorted_res],
-                            names=[i for i, s in sorted_scores], scores=[s for i, s in sorted_scores], curr_active='教师科研统计')
+                            items=[i for i, s in sorted_res], sum=[{'name': i, 'y': s} for i, s in sorted_res],
+                            names=[i for i, s in sorted_scores], scores=[{'name': i, 'y': s} for i, s in sorted_scores], curr_active='教师科研统计')
 
 @app.route('/教师画像', methods=['GET'])
 def jiaoshihuaxiang():

@@ -4,18 +4,13 @@
 
 {% block styles %}
 table {
-display: block;
-overflow-x: auto;
-overflow-y: auto;
+  display: block;
+  overflow-x: auto;
+  overflow-y: auto;
 }
 
 td {
-width:50px;
-}
-
-.headCol {
-//position: absolute;
-//width: 50px;
+  width:50px;
 }
 {% endblock %}
 
@@ -37,10 +32,17 @@ width:50px;
     <section class="content">
       <div class="container-fluid">
           <div style="display: flex" class="row">
-              <div class="col-md-6">
+            <div class="col-12">
+              <div class="card">
+                <div class="card-body">
+
+              <div style="width:49%; display: inline-block">
                 <div class="form-group">
-                  <label>时间</label>
-                  <select class="form-control select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true">
+                  <div style="text-align: center;">
+                    <label>时间</label>
+                  </div>
+
+                  <select style="background-color:#f4f6f9" class="form-control select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true">
                     <option selected="selected">2018下半年</option>
                     <option>2018上半年</option>
                     <option>2017下半年</option>
@@ -50,10 +52,12 @@ width:50px;
                 <!-- /.form-group -->
               </div>
               <!-- /.col -->
-              <div class="col-md-6">
+              <div style="width:49%; display: inline-block">
                 <div class="form-group">
-                  <label>系</label>
-                  <select class="form-control select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true">
+                  <div style="text-align: center;">
+                    <label>系</label>
+                  </div>
+                  <select style="background-color:#f4f6f9" class="form-control select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true">
                     <option selected="selected">全部</option>
                     <option>国际政治系</option>
                     <option>外交学系</option>
@@ -64,13 +68,21 @@ width:50px;
                 <!-- /.form-group -->
               </div>
               <!-- /.col -->
+              </div>
+              </div>
+              </div>
             </div>
           
         <div style="display:flex;" class="row">
             <div class="col-12">
                 <div class="card">
+                  <div class="card-header">
+                          <h3 class="card-title">
+                            2018下半年全部系 (概览)
+                          </h3>
+                  </div>
                   <div class="card-body">
-            <div style="width:24%; display: inline-block">
+            <div style="width:24%; display: inline-block; padding-left: 1em">
               <!-- small box -->
               <div class="small-box bg-info">
                 <div class="inner">
@@ -130,16 +142,15 @@ width:50px;
       <div class="row">
         <div class="col-12">
           <div class="card">
+              <div class="card-header">
+                  <h3 class="card-title">
+                      国务学院2015-2017科研成果 (统计)
+                  </h3>
+              </div>
             <div class="card-body">
               <div>
-                  <div style="color:white; height:30px; width:100%;font-size:large; background-color: #0b67cd">
-                    国务学院2015-2017科研成果 (统计)</div>
-              </div>
-              <div>
-                  
-                      <span style="width:49%;display: inline-block" id="chart1"></span>
-                      <span style="width:49%;display: inline-block" id="chart2"></span>
- 
+                <span style="width:49%;display: inline-block" id="chart1"></span>
+                <span style="width:49%;display: inline-block" id="chart2"></span>
               </div>
             </div>
           </div>
@@ -148,17 +159,16 @@ width:50px;
       <div class="row">
         <div class="col-12">
           <div class="card">
-            <div class="card-body">
-              <div style="color:white; height:30px; font-size:large; background-color: #0b67cd">
-                <span>国务学院2015-2017科研成果 (详情)</span>
-                <button type="button" style="color:white; font-size:15px;float:right; background-color: green; border-color: background-color: #0b67cd" class="btn btn-default btn-sm">
-                    <span class="glyphicon glyphicon-plus"></span>&nbsp;新增数据
-                </button>
+              <div class="card-header">
+                  <h3 class="card-title">
+                      国务学院2015-2017科研成果 (详情)
+                  </h3>
               </div>
+            <div class="card-body">
               <table id="data" class="table table-bordered table-striped">
                 <thead>
                   <tr>
-                    <th style="color:white;white-space: nowrap;font-size:13px; background-color: #2d89ef; border-color:#2d89ef">操作</th>
+                    <th class="select-checkbox" style="color:white;white-space: nowrap;font-size:13px; background-color: #2d89ef; border-color:#2d89ef"></th>
                     <th style="color:white;white-space: nowrap;font-size:13px;background-color: #2d89ef; border-color:#2d89ef">姓名</th>
                   {% for header in headers %}
                     <th style="
@@ -170,6 +180,7 @@ width:50px;
                 <tbody>
                   {% for row in rows %}
                   <tr>
+                    <!--
                     <td>
                       <button class="badge badge-success" style="border:0;width:55px;height:30px;font-size:15px"
                         data-toggle="modal" data-target="#myModalNorm" {% for cell in row %} {% if loop.index==1 %}
@@ -182,6 +193,8 @@ width:50px;
                         删除
                       </button>
                     </td>
+                    -->
+                    <td></td>
                     {% for cell in row %}
                     <td style="font-size:large;">{{ cell }}</td>
                     {% endfor %}
@@ -261,17 +274,33 @@ width:50px;
           text: '按科研类别统计'
       },
 
+      credits: {
+        enabled: false
+      },
+
       xAxis: {
           categories: {{ items | safe }}
       },
 
+      yAxis: {
+        gridLineWidth: 0,
+        minorGridLineWidth: 0,
+        title: {
+          text: '评分'
+        }
+      },
+
       series: [{
           type: 'column',
+          name: '得分',
           colorByPoint: true,
           data: {{ sum | safe }},
           showInLegend: false
-      }]
+      }],
 
+      exporting: {
+        enabled: false
+      }
     });
 
     chart1.update({
@@ -287,17 +316,33 @@ width:50px;
           text: '按教师统计'
       },
 
+      credits: {
+        enabled: false
+      },
+
       xAxis: {
           categories: {{ names | safe }}
       },
 
+      yAxis: {
+        gridLineWidth: 0,
+        minorGridLineWidth: 0,
+        title: {
+          text: '评分'
+        }
+      },
+
       series: [{
           type: 'column',
+          name: '得分',
           colorByPoint: true,
           data: {{ scores | safe }},
           showInLegend: false
-      }]
+      }],
 
+      exporting: {
+        enabled: false
+      }
     });
 
     chart2.update({
@@ -307,11 +352,24 @@ width:50px;
       },
     });
 
-      $('#data').DataTable();
+      $('#data').DataTable({
+        columnDefs: [ {
+            orderable: false,
+            className: 'select-checkbox',
+            targets:   0
+        } ],
+        select: {
+            style:    'os',
+            selector: 'td:first-child'
+        },
+        order: [[ 1, 'asc' ]]
+      });
   });
   </script>
   {% endblock %}
 
-  </body>
-
-  </html>
+  {% block footer %}
+  <footer class="main-footer">
+    <strong>Copyright &copy; <a href="#">复旦大学国际关系学院</a></strong>
+  </footer>
+  {% endblock %}

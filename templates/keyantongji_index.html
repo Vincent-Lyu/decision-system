@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+
+{% block title %}复旦国关数据库决策系统 | 教师科研统计{% endblock %}
+
+{% block styles %}
+table {
+  display: block;
+  overflow-x: auto;
+  overflow-y: auto;
+}
+
+td {
+  width:50px;
+}
+{% endblock %}
+
+{% block content %}
+<div class="wrapper">
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2" style="text-align: center">
+          <h1>教师科研统计</h1>
+        </div>
+      </div>
+      <!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+          <div style="display: flex" class="row">
+            <div class="col-12">
+              <div class="card">
+                <div class="card-body">
+
+              <div style="width:40%; display: inline-block">
+                <div class="form-group">
+                  <div style="text-align: center;">
+                    <label>时间</label>
+                  </div>
+
+                  <select style="background-color:#f4f6f9" class="form-control select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true">
+                    <option selected="selected">2018下半年</option>
+                    <option>2018上半年</option>
+                    <option>2017下半年</option>
+                    <option>2017上半年</option>
+                  </select>
+                </div>
+                <!-- /.form-group -->
+              </div>
+              <!-- /.col -->
+              <div style="width:40%; display: inline-block; padding-left: 50px;">
+                <div class="form-group">
+                  <div style="text-align: center;">
+                    <label>系</label>
+                  </div>
+                  <select style="background-color:#f4f6f9" class="form-control select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true">
+                    <option selected="selected">全部</option>
+                    <option>国际政治系</option>
+                    <option>外交学系</option>
+                    <option>政治学系</option>
+                    <option>公共行政系</option>
+                  </select>
+                </div>
+                <!-- /.form-group -->
+              </div>
+              <!-- /.col -->
+              <div style="display: inline-block; padding-left: 50px;">
+                  <button type="submit" form="nameform" value="Submit">查看</button>
+              </div>
+              
+              </div>
+              </div>
+              </div>
+            </div>
+          
+        
+    </div>
+    </section>
+  </div>
+  </div>
+  {% endblock %}
+
+
+
+
+
+  {% block bottom_scripts %}
+  <script>
+  
+  </script>
+  {% endblock %}
