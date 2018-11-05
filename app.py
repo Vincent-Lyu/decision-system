@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, redirect, url_for
 import os
 import json
 import pandas as pd
@@ -6,7 +6,8 @@ import pandas as pd
 app = Flask(__name__)
 
 CURR_DIR = os.path.dirname(os.path.realpath(__file__))
-keyanchengguo_df = pd.DataFrame.from_csv('{}/data/keyantongji/2018下半年-全部-v1.csv'.format(CURR_DIR))
+keyanchengguo_df = pd.read_csv('{}/data/keyantongji/2018下半年-全部-v1.csv'.format(CURR_DIR),
+                                index_col=0, encoding="utf-8")
 keyanchengguo_df = keyanchengguo_df.fillna('')
 
 class WordCloudD3DTO:
@@ -70,7 +71,8 @@ def jiaoshikeyantongji():
 
 @app.route('/getdata/keyantongji/<filename>')
 def get_keyantongji_data(filename):
-    data_df = pd.DataFrame.from_csv('{}/data/keyantongji/{}.csv'.format(CURR_DIR, filename))
+    data_df = pd.read_csv('{}/data/keyantongji/2018下半年-全部-v1.csv'.format(CURR_DIR),
+                                index_col=0, encoding="utf-8")
     data_df = data_df.fillna('')
 
     headers = list(data_df.columns)
