@@ -1,0 +1,161 @@
+<div id="table" class="table-editable">
+  <div id="table-operators" class="table-add float-right mb-3 mr-2" style="display: inline-block">
+      <a class="text-success" data-toggle="modal" data-target="#myModalNorm">
+        <i class="fa fa-plus fa-2x"
+          aria-hidden="true" style="font-size: large">&nbsp;新增
+        </i>
+      </a>
+      <a class="text-success" data-toggle="modal" data-target="#myModalSave" style="padding-left: 30px;">
+        <i class="fa fa-save fa-2x"
+          aria-hidden="true" style="font-size: large">&nbsp;另存为
+        </i>
+      </a>
+      <a class="text-success" data-toggle="modal" data-target="#myModalSave" style="padding-left: 30px;">
+        <i class="fa fa-file fa-2x"
+          aria-hidden="true" style="font-size: large">&nbsp;导出文件
+        </i>
+      </a>
+  </div>
+
+  <table class="table table-bordered table-responsive-md table-striped text-center">
+    <thead>
+        <tr>
+            <td></td>
+            <td></td>
+          {% for header in headers %}
+            <th class="text-center">{{ header }}</th>
+          {% endfor %}
+          </tr>
+    </thead>
+    
+    <tbody>
+        {% for row in rows %}
+        <tr id="rows">
+            <td style="vertical-align: middle;">
+                <span class="table-remove">
+                    <button type="button" class="btn btn-danger btn-rounded btn-sm my-0">
+                      <i class="fa fa-trash fa-1g" >&nbsp;删除</i>
+                    </button>
+                </span>
+            </td>
+            {% for cell in row %}
+            <td class="pt-3-half" style="vertical-align: middle;" contenteditable="true">{{ cell }}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+      <!-- Modal -->
+  <div class="modal inmodal" id="myModalNorm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <!-- Modal Header -->
+          <div class="modal-header" style="display: block; text-align: center">
+            <h4 class="modal-title" id="myModalLabel" >
+              新增记录
+            </h4>
+          </div>
+  
+          <!-- Modal Body -->
+          <div class="modal-body">
+  
+            <form role="form">
+              <div class="form-group">
+                  <label>姓名</label>
+                  <input id="modal-input" type="text" class="form-control" id="exampleInputEmail1" placeholder="" />
+              </div>
+              {% for header in headers %}
+              <div class="form-group">
+                <label>{{ header }}</label>
+                <input id="modal-input" type="number" class="form-control" id="exampleInputEmail1" placeholder="" />
+              </div>
+              {% endfor %}
+            </form>
+          </div>
+  
+          <!-- Modal Footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">
+              取消
+            </button>
+            <button type="button" id="save" class="btn btn-primary" data-dismiss="modal">
+              保存修改
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal -->
+  <div class="modal inmodal" id="myModalSave" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <!-- Modal Header -->
+          <div class="modal-header" style="display: block; text-align: center">
+            <h4 class="modal-title" id="myModalLabel" >
+              保存表格
+            </h4>
+          </div>
+  
+          <!-- Modal Body -->
+          <div class="modal-body">
+  
+            <form role="form">
+              <div class="form-group">
+                  <label>文件名</label>
+                  <input id="filename" type="text" class="form-control" id="exampleInputEmail1" placeholder="" />
+              </div>
+              
+          </div>
+  
+          <!-- Modal Footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">
+              取消
+            </button>
+            <button type="button" id="table-save" class="btn btn-primary" data-dismiss="modal">
+              确定保存
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+    $("button#save").click(function(){
+      var content = '<tr id="rows">\
+                    <td><span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0"><i class="fa fa-trash fa-1g" >&nbsp;删除</i></button></span></td>';
+
+      var $inputs = $("input#modal-input");
+
+      $inputs.each(function(){
+        var td = $(this).val();
+        content += ('<td class="pt-3-half" contenteditable="true">' + td + "</td>");
+      })
+      content += "</tr>";
+
+      $(content).insertBefore('table > tbody > tr:first');
+    });
+
+    $("button#table-save").click(function(){
+      var rows = $("tbody > tr");
+      var data = [];
+
+      var j;
+      for (j = 0; j < rows.length; j++) {
+        var tds = rows[j].getElementsByClassName("pt-3-half");
+        var row = []
+        var i;
+        for (i = 0; i < tds.length; i++) {
+          row.push(tds[i].innerText);
+        }
+        data.push(row);
+      }
+
+      var filename = $("input#filename").val();
+
+      $.get('/save/' + filename + "/" + data);
+      });
+    </script>

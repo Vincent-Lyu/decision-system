@@ -6,7 +6,7 @@ import pandas as pd
 app = Flask(__name__)
 
 CURR_DIR = os.path.dirname(os.path.realpath(__file__))
-keyanchengguo_df = pd.DataFrame.from_csv('{}/data/教师科研成果.csv'.format(CURR_DIR))
+keyanchengguo_df = pd.DataFrame.from_csv('{}/data/keyantongji/2018下半年-全部-v1.csv'.format(CURR_DIR))
 keyanchengguo_df = keyanchengguo_df.fillna('')
 
 class WordCloudD3DTO:
@@ -56,7 +56,8 @@ def getWordCloudData():
 
 @app.route('/', methods=['GET'])
 def index():
-    return render_template('index.html', curr_active='学院概况')
+    return redirect(url_for('.jiaoshikeyantongji', curr_active='教师科研统计'))
+    #return render_template('index.html', curr_active='教师科研统计')
 
 @app.route('/教师绩效', methods=['GET'])
 def jiaoshijixiao():
@@ -65,6 +66,25 @@ def jiaoshijixiao():
 
 @app.route('/教师科研统计', methods=['GET'])
 def jiaoshikeyantongji():
+    return render_template('keyantongji_index.html', curr_active='教师科研统计')
+
+@app.route('/getdata/keyantongji/<filename>')
+def get_keyantongji_data(filename):
+    data_df = pd.DataFrame.from_csv('{}/data/keyantongji/{}.csv'.format(CURR_DIR, filename))
+    data_df = data_df.fillna('')
+
+    headers = list(data_df.columns)
+    rows = []
+    for index in data_df.index:
+        row = [index]
+        for col in data_df.columns:
+            row.append(data_df.loc[index][col])
+        rows.append(row)
+
+    return render_template('_table.html', headers=headers, rows=rows)
+
+@app.route("/keyantongji/detail/<time>/<department>", methods=['GET'])
+def get_keyantongji_detail(time, department):
     df = keyanchengguo_df
 
     headers = list(df.columns)
@@ -91,13 +111,17 @@ def jiaoshikeyantongji():
 
     sorted_scores = sorted(scores, key=lambda t: t[1], reverse=True)
 
-    return render_template('keyantongji_index.html', total=total,
+    return render_template('keyantongji_detail.html', total=total,
                             rank1_item=sorted_res[0][0], rank1_score=sorted_res[0][1],
                             rank2_item=sorted_res[1][0], rank2_score=sorted_res[1][1],
                             rank3_item=sorted_res[2][0], rank3_score=sorted_res[2][1],
                             headers=headers, rows=rows, 
                             items=[i for i, s in sorted_res], sum=[{'name': i, 'y': s} for i, s in sorted_res],
                             names=[i for i, s in sorted_scores], scores=[{'name': i, 'y': s} for i, s in sorted_scores], curr_active='教师科研统计')
+
+@app.route('/save/<filename>/<data>', methods=['GET'])
+def savedatafile(filename, data):
+    print(filename)
 
 @app.route('/教师画像', methods=['GET'])
 def jiaoshihuaxiang():

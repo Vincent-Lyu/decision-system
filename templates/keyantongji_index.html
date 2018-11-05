@@ -8,10 +8,6 @@ table {
   overflow-x: auto;
   overflow-y: auto;
 }
-
-td {
-  width:50px;
-}
 {% endblock %}
 
 {% block content %}
@@ -36,52 +32,61 @@ td {
               <div class="card">
                 <div class="card-body">
 
-              <div style="width:40%; display: inline-block">
-                <div class="form-group">
-                  <div style="text-align: center;">
-                    <label>时间</label>
-                  </div>
-
-                  <select style="background-color:#f4f6f9" class="form-control select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true">
-                    <option selected="selected">2018下半年</option>
-                    <option>2018上半年</option>
-                    <option>2017下半年</option>
-                    <option>2017上半年</option>
-                  </select>
-                </div>
-                <!-- /.form-group -->
-              </div>
-              <!-- /.col -->
               <div style="width:40%; display: inline-block; padding-left: 50px;">
-                <div class="form-group">
-                  <div style="text-align: center;">
-                    <label>系</label>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <label class="input-group-text" for="inputGroupSelect01">年</label>
                   </div>
-                  <select style="background-color:#f4f6f9" class="form-control select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true">
-                    <option selected="selected">全部</option>
-                    <option>国际政治系</option>
-                    <option>外交学系</option>
-                    <option>政治学系</option>
-                    <option>公共行政系</option>
+                  <select id="time" class="custom-select" id="inputGroupSelect01">
+                    <option selected value="1">2018下半年</option>
+                    <option value="2">2018上半年</option>
+                    <option value="3">2017下半年</option>
+                    <option value="3">2017上半年</option>
                   </select>
                 </div>
                 <!-- /.form-group -->
               </div>
               <!-- /.col -->
-              <div style="display: inline-block; padding-left: 50px;">
-                  <button type="submit" form="nameform" value="Submit">查看</button>
+              <div style="width:40%; display: inline-block; padding-left:50px;">
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <label class="input-group-text" for="inputGroupSelect01">系</label>
+                  </div>
+                  <select id="department" class="custom-select" id="inputGroupSelect01">
+                    <option selected>全部</option>
+                    <option value="a">国际政治系</option>
+                    <option value="a">外交学系</option>
+                    <option value="a">政治学系</option>
+                    <option value="a">公共行政系</option>
+                  </select>
+                </div>
+                
+                <!-- /.form-group -->
               </div>
-              
+              <!-- /.col -->
+
+              <div style="display: inline-block; padding-left: 50px;">
+                  <button id="submit" class="btn btn-secondary btn-sm">
+                      <span style="font-size:medium; padding-left: 10px; padding-right: 10px">
+                        查看
+                      </span>
+                  </button>
+              </div>
               </div>
               </div>
               </div>
             </div>
-          
+        <div id="keyantongji-content">
         
+        </div>
+    <!-- keyantongji-content -->
     </div>
     </section>
+    <!-- /.content -->
   </div>
-  </div>
+  <!-- /.content-wrapper -->
+
+
   {% endblock %}
 
 
@@ -90,6 +95,15 @@ td {
 
   {% block bottom_scripts %}
   <script>
-  
+  $("button#submit").click(function() {
+    $('div#keyantongji-content').load('/keyantongji/detail/'+ $("select#time option:selected").text() + '/'+ $("select#department option:selected").text());
+  });
   </script>
+  
+  {% endblock %}
+
+  {% block footer %}
+  <footer class="main-footer">
+    <strong>Copyright &copy; <a href="#">复旦大学国际关系学院</a></strong>
+  </footer>
   {% endblock %}

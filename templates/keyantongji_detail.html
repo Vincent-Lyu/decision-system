@@ -1,375 +1,258 @@
-{% extends "base.html" %}
-
-{% block title %}复旦国关数据库决策系统 | 教师科研统计{% endblock %}
-
-{% block styles %}
-table {
-  display: block;
-  overflow-x: auto;
-  overflow-y: auto;
-}
-
-td {
-  width:50px;
-}
-{% endblock %}
-
-{% block content %}
-<div class="wrapper">
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2" style="text-align: center">
-          <h1>教师科研统计</h1>
-        </div>
-      </div>
-      <!-- /.container-fluid -->
-    </section>
-
-    <!-- Main content -->
-    <section class="content">
-      <div class="container-fluid">
-          <div style="display: flex" class="row">
-            <div class="col-12">
-              <div class="card">
-                <div class="card-body">
-
-              <div style="width:49%; display: inline-block">
-                <div class="form-group">
-                  <div style="text-align: center;">
-                    <label>时间</label>
-                  </div>
-
-                  <select style="background-color:#f4f6f9" class="form-control select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true">
-                    <option selected="selected">2018下半年</option>
-                    <option>2018上半年</option>
-                    <option>2017下半年</option>
-                    <option>2017上半年</option>
-                  </select>
-                </div>
-                <!-- /.form-group -->
-              </div>
-              <!-- /.col -->
-              <div style="width:49%; display: inline-block">
-                <div class="form-group">
-                  <div style="text-align: center;">
-                    <label>系</label>
-                  </div>
-                  <select style="background-color:#f4f6f9" class="form-control select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true">
-                    <option selected="selected">全部</option>
-                    <option>国际政治系</option>
-                    <option>外交学系</option>
-                    <option>政治学系</option>
-                    <option>公共行政系</option>
-                  </select>
-                </div>
-                <!-- /.form-group -->
-              </div>
-              <!-- /.col -->
-              </div>
-              </div>
-              </div>
-            </div>
-          
-        <div style="display:flex;" class="row">
-            <div class="col-12">
-                <div class="card">
-                  <div class="card-header">
-                          <h3 class="card-title">
-                            2018下半年全部系 (概览)
-                          </h3>
-                  </div>
-                  <div class="card-body">
-            <div style="width:24%; display: inline-block; padding-left: 1em">
-              <!-- small box -->
-              <div class="small-box bg-info">
-                <div class="inner">
-                  <h3>{{ total }}</h3>
-                  <p>科研得分总计</p>
-                </div>
-                <div class="icon">
-                  <i class="ion ion-bag"></i>
-                </div>
-              </div>
-            </div>
-            <!-- ./col -->
-            <div style="width:24%; padding-left:10px; display: inline-block">
-              <!-- small box -->
-              <div class="small-box bg-success">
-                <div class="inner">
-                  <h3>{{ rank1_score }}</h3>
-                  <p>{{ rank1_item }}</p>
-                </div>
-                <div class="icon">
-                  <i class="ion ion-stats-bars"></i>
-                </div>
-              </div>
-            </div>
-            <!-- ./col -->
-            <div style="width:24%; padding-left:10px; display: inline-block">
-              <!-- small box -->
-              <div class="small-box bg-warning">
-                <div class="inner">
-                    <h3>{{ rank2_score }}</h3>
-                    <p>{{ rank2_item }}</p>
-                </div>
-                <div class="icon">
-                  <i class="ion ion-person-add"></i>
-                </div>
-              </div>
-            </div>
-            <!-- ./col -->
-            <div style="width:24%; padding-left:10px; display: inline-block">
-              <!-- small box -->
-              <div class="small-box bg-danger">
-                <div class="inner">
-                    <h3>{{ rank3_score }}</h3>
-                    <p>{{ rank3_item }}</p>
-                <div class="icon">
-                  <i class="ion ion-pie-graph"></i>
-                </div>
-                </div>
-            </div>
-            <!-- ./col -->
-          </div>
-          </div>
-          </div>
-          </div>
-      </div>
-
-      <div class="row">
-        <div class="col-12">
-          <div class="card">
-              <div class="card-header">
+<div style="display:flex;" class="row">
+    <div class="col-12">
+        <div class="card card-primary card-outline">
+          <div class="card-header">
                   <h3 class="card-title">
-                      国务学院2015-2017科研成果 (统计)
+                      <i class="fa fa-bookmark"></i>
+                    2018下半年全部系-概览
                   </h3>
-              </div>
-            <div class="card-body">
-              <div>
-                <span style="width:49%;display: inline-block" id="chart1"></span>
-                <span style="width:49%;display: inline-block" id="chart2"></span>
-              </div>
-            </div>
           </div>
+          <div class="card-body">
+    <div style="width:24%; display: inline-block; padding-left: 1em">
+      <!-- small box -->
+      <div class="small-box bg-info">
+        <div class="inner">
+          <h3>{{ total }}</h3>
+          <p>科研得分总计</p>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-12">
-          <div class="card">
-              <div class="card-header">
-                  <h3 class="card-title">
-                      国务学院2015-2017科研成果 (详情)
-                  </h3>
-              </div>
-            <div class="card-body">
-              <table id="data" class="table table-bordered table-striped">
-                <thead>
-                  <tr>
-                    <th class="select-checkbox" style="color:white;white-space: nowrap;font-size:13px; background-color: #2d89ef; border-color:#2d89ef"></th>
-                    <th style="color:white;white-space: nowrap;font-size:13px;background-color: #2d89ef; border-color:#2d89ef">姓名</th>
-                  {% for header in headers %}
-                    <th style="
-                      color:white;font-size:13px;background-color: #2d89ef; border-color:#2d89ef">{{ header }}</th>
-                    {% endfor %}
-                  </tr>
-                </thead>
-
-                <tbody>
-                  {% for row in rows %}
-                  <tr>
-                    <!--
-                    <td>
-                      <button class="badge badge-success" style="border:0;width:55px;height:30px;font-size:15px"
-                        data-toggle="modal" data-target="#myModalNorm" {% for cell in row %} {% if loop.index==1 %}
-                        data-user="{{cell}}" {% endif %} {% if loop.index==2 %} data-col2="{{cell}}" {% endif %} {% if
-                        loop.index==3 %} data-col3="{{cell}}" {% endif %} {% if loop.index==4 %} data-col4="{{cell}}"
-                        {% endif %} {% if loop.index==5 %} data-col5="{{cell}}" {% endif %} {% endfor %}>
-                        修改
-                      </button>
-                      <button class="badge badge-danger" style="border:0;width:55px;height:30px;font-size:15px">
-                        删除
-                      </button>
-                    </td>
-                    -->
-                    <td></td>
-                    {% for cell in row %}
-                    <td style="font-size:large;">{{ cell }}</td>
-                    {% endfor %}
-                  </tr>
-                  {% endfor %}
-
-
-              </table>
-            </div>
-            <!-- /.card-body -->
-          </div>
-          <!-- /.card -->
-        </div>
-        <!-- /.col -->
-      </div>
-      <!-- /.row -->
-    </div>
-    </section>
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
-
-  <!-- Modal -->
-  <div class="modal inmodal" id="myModalNorm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <!-- Modal Header -->
-        <div class="modal-header">
-          <h4 class="modal-title" id="myModalLabel">
-            修改数据
-          </h4>
-          <button type="button" class="close" data-dismiss="modal">
-            <span aria-hidden="true">&times;</span>
-            <span class="sr-only">Close</span>
-          </button>
-
-        </div>
-
-        <!-- Modal Body -->
-        <div class="modal-body">
-
-          <form role="form">
-            {% for header in headers %}
-            <div class="form-group">
-              <label>{{ header }}</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" placeholder="" />
-            </div>
-            {% endfor %}
-          </form>
-        </div>
-
-        <!-- Modal Footer -->
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">
-            关闭
-          </button>
-          <button type="button" class="btn btn-primary">
-            保存修改
-          </button>
+        <div class="icon">
+          <i class="ion ion-bag"></i>
         </div>
       </div>
     </div>
+    <!-- ./col -->
+    <div style="width:24%; padding-left:10px; display: inline-block">
+      <!-- small box -->
+      <div class="small-box bg-success">
+        <div class="inner">
+          <h3>{{ rank1_score }}</h3>
+          <p>{{ rank1_item }}总计</p>
+        </div>
+        <div class="icon">
+          <i class="ion ion-stats-bars"></i>
+        </div>
+      </div>
+    </div>
+    <!-- ./col -->
+    <div style="width:24%; padding-left:10px; display: inline-block">
+      <!-- small box -->
+      <div class="small-box bg-warning">
+        <div class="inner" style="color: white; ">
+            <h3>{{ rank2_score }}</h3>
+            <p>{{ rank2_item }}总计</p>
+        </div>
+        <div class="icon">
+          <i class="ion ion-person-add"></i>
+        </div>
+      </div>
+    </div>
+    <!-- ./col -->
+    <div style="color: white; width:24%; padding-left:10px; display: inline-block">
+      <!-- small box -->
+      <div class="small-box" style="background-color:sandybrown">
+        <div class="inner">
+            <h3>{{ rank3_score }}</h3>
+            <p>{{ rank3_item }}总计</p>
+        <div class="icon">
+          <i class="ion ion-pie-graph"></i>
+        </div>
+        </div>
+    </div>
+    <!-- ./col -->
   </div>
-  {% endblock %}
+  </div>
+  </div>
+  </div>
+</div>
+
+<div class="row">
+<div class="col-12">
+  <div class="card card-primary card-outline">
+      <div class="card-header">
+          <h3 class="card-title">
+              <i class="fa fa-bar-chart-o"></i>
+              国务学院2015-2017科研成果-统计
+          </h3>
+      </div>
+    <div class="card-body">
+      <div>
+
+        <span style="width:49%;display: inline-block" id="chart1"></span>
+        <span style="width:49%;display: inline-block" id="chart2"></span>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<div class="row">
+<div class="col-12">
+  <div class="card card-primary card-outline">
+      <div class="card-header">
+          <h3 class="card-title" style="display: inline-block">
+              <i class="fa fa-table"></i>
+              国务学院2015-2017科研成果-详细数据
+          </h3>
+
+          <div id="select-data" class="table-add float-right mb-3 mr-2" 
+                style="display: inline-block; height: 20px;">
+              <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <label class="input-group-text" for="inputGroupSelect01">选择数据</label>
+                  </div>
+                  <select id="data-version" class="custom-select"
+                          onchange="selectDataVersion();">
+                    <option disabled selected value="null">最新文件：2018下半年-全部-v3</option>
+                    <option value="2018下半年-全部-v1">2018下半年-全部-v1</option>
+                    <option value="2018下半年-全部-v1">2018下半年-全部-v2</option>
+                    <option value="2018下半年-全部-v1">2018下半年-全部-v3</option>
+                  </select>
+                  <!--<div class="input-group-append">
+                      <button id="submit" class="btn btn-secondary btn-sm">确认</button>
+                    </div>-->
+                  
+              </div>
+          </div>
+      </div>
+    <div class="card-body">
+      <!--
+            <td>
+              <button class="badge badge-success" style="border:0;width:55px;height:30px;font-size:15px"
+                data-toggle="modal" data-target="#myModalNorm" {% for cell in row %} {% if loop.index==1 %}
+                data-user="{{cell}}" {% endif %} {% if loop.index==2 %} data-col2="{{cell}}" {% endif %} {% if
+                loop.index==3 %} data-col3="{{cell}}" {% endif %} {% if loop.index==4 %} data-col4="{{cell}}"
+                {% endif %} {% if loop.index==5 %} data-col5="{{cell}}" {% endif %} {% endfor %}>
+                修改
+              </button>
+              <button class="badge badge-danger" style="border:0;width:55px;height:30px;font-size:15px">
+                删除
+              </button>
+            </td>
+      -->
+      <div id="data-table"></div>
+           
+    </div>
+    <!-- /.card-body -->
+  </div>
+  <!-- /.card -->
+</div>
+<!-- /.col -->
+</div>
+<!-- /.row -->
 
 
-
-
-
-  {% block bottom_scripts %}
-  <script>
-  $(document).ready( function () {
-
-    var chart1 = Highcharts.chart('chart1', {
-
-      title: {
-          text: '按科研类别统计'
-      },
-
-      credits: {
-        enabled: false
-      },
-
-      xAxis: {
-          categories: {{ items | safe }}
-      },
-
-      yAxis: {
-        gridLineWidth: 0,
-        minorGridLineWidth: 0,
+<script>
+    $(document).ready( function () {
+  
+      var chart1 = Highcharts.chart('chart1', {
+  
         title: {
-          text: '评分'
-        }
-      },
-
-      series: [{
-          type: 'column',
-          name: '得分',
-          colorByPoint: true,
-          data: {{ sum | safe }},
-          showInLegend: false
-      }],
-
-      exporting: {
-        enabled: false
-      }
-    });
-
-    chart1.update({
-      chart: {
-          inverted: true,
-          polar: false
-      },
-    });
-
-    var chart2 = Highcharts.chart('chart2', {
-
-      title: {
-          text: '按教师统计'
-      },
-
-      credits: {
-        enabled: false
-      },
-
-      xAxis: {
-          categories: {{ names | safe }}
-      },
-
-      yAxis: {
-        gridLineWidth: 0,
-        minorGridLineWidth: 0,
-        title: {
-          text: '评分'
-        }
-      },
-
-      series: [{
-          type: 'column',
-          name: '得分',
-          colorByPoint: true,
-          data: {{ scores | safe }},
-          showInLegend: false
-      }],
-
-      exporting: {
-        enabled: false
-      }
-    });
-
-    chart2.update({
-      chart: {
-          inverted: false,
-          polar: false
-      },
-    });
-
-      $('#data').DataTable({
-        columnDefs: [ {
-            orderable: false,
-            className: 'select-checkbox',
-            targets:   0
-        } ],
-        select: {
-            style:    'os',
-            selector: 'td:first-child'
+            text: '按科研类别统计'
         },
-        order: [[ 1, 'asc' ]]
+  
+        credits: {
+          enabled: false
+        },
+  
+        xAxis: {
+            categories: {{ items | safe }}
+        },
+  
+        yAxis: {
+          gridLineWidth: 0,
+          minorGridLineWidth: 0,
+          title: {
+            text: '评分'
+          }
+        },
+  
+        series: [{
+            type: 'column',
+            name: '得分',
+            colorByPoint: true,
+            data: {{ sum | safe }},
+            showInLegend: false
+        }],
+  
+        exporting: {
+          enabled: false
+        }
       });
-  });
-  </script>
-  {% endblock %}
+  
+      chart1.update({
+        chart: {
+            inverted: true,
+            polar: false
+        },
+      });
+  
+      var chart2 = Highcharts.chart('chart2', {
+  
+        title: {
+            text: '按教师统计'
+        },
+  
+        credits: {
+          enabled: false
+        },
+  
+        xAxis: {
+            categories: {{ names | safe }}
+        },
+  
+        yAxis: {
+          gridLineWidth: 0,
+          minorGridLineWidth: 0,
+          title: {
+            text: '评分'
+          }
+        },
+  
+        series: [{
+            type: 'column',
+            name: '得分',
+            colorByPoint: true,
+            data: {{ scores | safe }},
+            showInLegend: false
+        }],
+  
+        exporting: {
+          enabled: false
+        }
+      });
+  
+      chart2.update({
+        chart: {
+            inverted: false,
+            polar: false
+        },
+      });
+  
+        $('#data').DataTable({
+          columnDefs: [ {
+              orderable: false,
+              className: 'select-checkbox',
+              targets:   0
+          } ],
+          select: {
+              style:    'os',
+              selector: 'td:first-child'
+          },
+          order: [[ 1, 'asc' ]]
+        });
+  
+  
+      $("button#submit").click(function() {
+        $('div#keyantongji-content').load('/keyantongji/detail/'+ $("select#time option:selected").text() + '/'+ $("select#department option:selected").text());
+      });
 
-  {% block footer %}
-  <footer class="main-footer">
-    <strong>Copyright &copy; <a href="#">复旦大学国际关系学院</a></strong>
-  </footer>
-  {% endblock %}
+      $('.table-remove').click(function() {
+        $(this).parents('tr').detach();
+      });
+    });
+
+    function selectDataVersion() {
+        var selectBox = document.getElementById("data-version");
+        var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+        $("#data-table").load('/getdata/keyantongji/' + selectedValue);
+    }
+    </script>

@@ -1,0 +1,41 @@
+<div id="table-operators" class="table-add float-right mb-3 mr-2" style="display: inline-block">
+        <a class="text-success" data-toggle="modal" data-target="#myModalNorm">
+            <i class="fa fa-plus fa-2x"
+              aria-hidden="true" style="font-size: large">&nbsp;新增
+            </i>
+          </a>
+          <a class="text-success" data-toggle="modal" data-target="#myModalSave" style="padding-left: 30px;">
+            <i class="fa fa-save fa-2x"
+              aria-hidden="true" style="font-size: large">&nbsp;另存为
+            </i>
+          </a>
+</div>
+
+<table class="table table-bordered table-responsive-md table-striped text-center">
+        <thead>
+            <tr>
+                <td></td>
+                <td></td>
+              {% for header in headers %}
+                <th class="text-center">{{ header }}</th>
+              {% endfor %}
+              </tr>
+        </thead>
+        
+        <tbody>
+            {% for row in rows %}
+            <tr id="rows">
+                <td style="vertical-align: middle;">
+                    <span class="table-remove">
+                        <button type="button" class="btn btn-danger btn-rounded btn-sm my-0">
+                          <i class="fa fa-trash fa-1g" >&nbsp;删除</i>
+                        </button>
+                    </span>
+                </td>
+                {% for cell in row %}
+                <td class="pt-3-half" style="vertical-align: middle;" contenteditable="true">{{ cell }}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </tbody>
+</table>

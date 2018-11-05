@@ -10925,7 +10925,7 @@ label:not(.form-check-label):not(.custom-file-label) {
 }
 
 .card-primary.card-outline {
-  border-top: 3px solid #007bff;
+  border-top: 3px solid #b3b3cc;
 }
 
 .bg-primary .btn-tool, .label-primary .btn-tool,

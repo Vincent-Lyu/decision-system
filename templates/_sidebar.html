@@ -4,7 +4,7 @@
     <a href="{{ url_for('.index') }}" class="brand-link">
       <img src="/static/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
-      <span class="brand-text font-weight-light">国关数据决策系统</span>
+      <span class="brand-text font-weight-light">数据决策系统</span>
     </a>
 
     <!-- Sidebar -->
@@ -15,7 +15,7 @@
           <img src="/static/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="{{ url_for('.index') }}" class="d-block">系统管理员</a>
+          <a href="{{ url_for('.index') }}" class="d-block">管理员</a>
         </div>
       </div>
 
@@ -25,30 +25,30 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item has-treeview menu-open">
-          {% if curr_active == '学院概况' %}
-            <a href="{{ url_for('.index') }}" class="nav-link active">
+          {% if curr_active == '职称申请' %}
+            <a href="#" class="nav-link active">
           {% else %}
-            <a href="{{ url_for('.index') }}" class="nav-link">
+            <a href="#" class="nav-link">
           {% endif %}
               <i class="nav-icon fa fa-dashboard"></i>
               <p>
-                学院概况
+                职称申请
                 <i class="right fa fa-angle-left"></i>
               </p>
             </a>
           </li>
           <li class="nav-item">
 
-          {% if curr_active == '教师绩效' %}
-            <a href="{{ url_for('.jiaoshijixiao') }}" class="nav-link active">
+          {% if curr_active == '工作量申请' %}
+            <a href="#" class="nav-link active">
           {% else %}
-            <a href="{{ url_for('.jiaoshijixiao') }}" class="nav-link">
+            <a href="#" class="nav-link">
           {% endif %}
  
               <i class="nav-icon fa fa-th"></i>
               <p>
-                教师绩效
-                <span class="right badge badge-danger">数据有更新</span>
+                工作量申请
+                <!--<span class="right badge badge-danger">数据有更新</span>-->
               </p>
             </a>
           </li>
@@ -67,15 +67,15 @@
             </a>
           </li>
           <li class="nav-item has-treeview">
-          {% if curr_active == '教师画像' %}
-            <a href="{{ url_for('.jiaoshihuaxiang') }}" class="nav-link active">
+          {% if curr_active == '出国申请表' %}
+            <a href="#" class="nav-link active">
           {% else %}
-            <a href="{{ url_for('.jiaoshihuaxiang') }}" class="nav-link">
+            <a href="#" class="nav-link">
           {% endif %}
  
               <i class="nav-icon fa fa-user"></i>
               <p>
-                教师画像
+                出国申请表
                 <i class="fa fa-angle-left right"></i>
               </p>
             </a>
